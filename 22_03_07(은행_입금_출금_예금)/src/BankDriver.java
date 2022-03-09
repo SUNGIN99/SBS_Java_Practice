@@ -34,23 +34,38 @@ public class BankDriver {
         a2.setOwner(p2);
 
         // 3)입출금 실행
-        System.out.println("p2 초기잔고 : " + p2.getAccountClass().getBalance() + "원, 초기현금 : " + p2.getcashAmount() + "원");;
-
+        System.out.println("\n<입출금 실행>");
+        System.out.println("#실행 전");
+        p2.getCurrentState();
 
         // p2에
-        // 30000원 입금
+        // 3-1) 30000원 입금
         p2.getAccountClass().deposit(30000);
-
-        // 170000원 출금
+        // 3-2) 170000원 출금
         p2.getAccountClass().withdraw(170000);
-
-        // 620000원 입금
+        // 3-3) 620000원 입금
         p2.getAccountClass().deposit(620000);
-
-        // 890000원 출금
+        // 3-4) 890000원 출금
         p2.getAccountClass().withdraw(890000);
 
+        System.out.println("\n#실행 후");
+        p2.getCurrentState();
 
+        // 4) 송금
+        System.out.println("\n<송금실행>");
+        System.out.println("#실행 전");
+        p1.getCurrentState();
+        p2.getCurrentState();
+        System.out.println("");
+
+        a2.transfer(a1, 200000); // a2 : kim, a1 : iu
+        a1.transfer(p2, 150000); // a1 : iu,  p2 : kim
+        p2.transfer(a1, 270000); // p2 : kim, a1 : iu
+        p1.transfer(p2,130000);  // p1 : iu , p2, kim
+
+        System.out.println("\n#실행 후");;
+        p1.getCurrentState();
+        p2.getCurrentState();
 
         // 디버그
         //System.out.println(p2.account.balance);
