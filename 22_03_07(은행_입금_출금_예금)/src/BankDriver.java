@@ -3,16 +3,9 @@ public class BankDriver {
     public static void main(String[] args) {
 
         // 1) 예금주 1번 생성
-        Person p1 = new Person();
+        Person p1 = new Person("IU", 28, 30000 );
+        BankAccount a1 = new BankAccount(100000, p1);
 
-        p1.setName("IU");
-        p1.setAge(28);
-        p1.setcashAmount(30000);
-
-        BankAccount a1 = new BankAccount();
-        a1.setBalance(100000);
-
-        //연관된 객체끼리 엮어줄것!
         p1.setAccount(a1);
         a1.setOwner(p1);
 
@@ -22,17 +15,9 @@ public class BankDriver {
         // 계정은 a2, a2의 소유인은 p2
         // 초기 p2의 현금보유량은 100,000원이고, a2의 잔액은 500,000원
 
-        Person p2 = new Person();
-        p2.setName("KIM");
-        p2.setAge(24);
-        p2.setcashAmount(100000);
-
-        BankAccount a2 = new BankAccount();
-        a2.setBalance(500000);
-
-        p2.setAccount(a2);
-        a2.setOwner(p2);
-
+        Person p2 = new Person("KIM", 24, 100000);
+        BankAccount a2 = new BankAccount(500000, p2);
+        /*
         // 3)입출금 실행
         System.out.println("\n<입출금 실행>");
         System.out.println("#실행 전");
@@ -40,22 +25,23 @@ public class BankDriver {
 
         // p2에
         // 3-1) 30000원 입금
-        p2.getAccountClass().deposit(30000);
+        //p2.getAccountClass().deposit(30000);
         // 3-2) 170000원 출금
-        p2.getAccountClass().withdraw(170000);
+        //p2.getAccountClass().withdraw(170000);
         // 3-3) 620000원 입금
-        p2.getAccountClass().deposit(620000);
+        //p2.getAccountClass().deposit(620000);
         // 3-4) 890000원 출금
-        p2.getAccountClass().withdraw(890000);
+        //p2.getAccountClass().withdraw(890000);
 
-        System.out.println("\n#실행 후");
-        p2.getCurrentState();
+        //System.out.println("\n#실행 후");
+        //p2.getCurrentState();
+*/
 
         // 4) 송금
         System.out.println("\n<송금실행>");
         System.out.println("#실행 전");
-        p1.getCurrentState();
-        p2.getCurrentState();
+        //p1.getCurrentState();
+        //p2.getCurrentState();
         System.out.println("");
 
         a2.transfer(a1, 200000); // a2 : kim, a1 : iu
@@ -71,6 +57,7 @@ public class BankDriver {
         //System.out.println(p2.account.balance);
         //System.out.println(p2.age);
         //System.out.println(p2.cashAmount);
+
 
     }
 
