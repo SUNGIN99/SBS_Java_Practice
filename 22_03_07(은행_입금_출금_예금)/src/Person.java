@@ -5,6 +5,34 @@ public class Person {
     private int cashAmount;
     private BankAccount account;
 
+    //생성자 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public Person(){
+
+    }
+
+    public Person(String pName, int pAge){
+        cashAmount = 0;
+        name = pName;
+
+        if(pAge < 0)
+            age = 12;
+        else
+            age = pAge;
+
+    }
+
+    public Person(String pName, int pAge, int pCashAmount){
+        cashAmount = pCashAmount;
+        name = pName;
+
+        if(pAge < 0)
+            age = 12;
+        else
+            age = pAge;
+    }
+
+
 
     // setter -----------------------------------------------------------------------------------------------------------------------------------------------------------
     public void setName(String name){
@@ -63,8 +91,8 @@ public class Person {
 
             // 출력부
             System.out.println("-true -from : [" + this.name + "], to : [" + to.getName() + "], amount : [" + amount + "], balance : [" + my_Balance + "]");
-            this.getCurrentState();
-            to.getCurrentState();
+            //this.getCurrentState();
+            //to.getCurrentState();
             System.out.println("");
 
             return true;
@@ -89,8 +117,8 @@ public class Person {
 
             // 출력부
             System.out.println("-true -from : [" + this.name + "], to : [" + to.getOwner().getName() + "], amount : [" + amount + "], balance : [" + my_Balance + "]");
-            this.getCurrentState();
-            to.getOwner().getCurrentState();
+            //this.getCurrentState();
+            //to.getOwner().getCurrentState();
             System.out.println("");
 
             return true;

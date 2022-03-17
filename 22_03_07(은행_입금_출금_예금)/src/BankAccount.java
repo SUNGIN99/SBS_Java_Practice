@@ -2,6 +2,32 @@ public class BankAccount {
     private int balance = 0;
     private Person owner;
 
+    //생성자 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    public BankAccount(){}
+
+    public BankAccount(int pBalance){
+        if( pBalance < 0)
+            balance = 0;
+        else
+            balance = pBalance;
+    }
+
+    public BankAccount(Person Owner){
+        balance = 0;
+        this.owner = Owner;
+        this.owner.setAccount(this);
+    }
+
+    public BankAccount(int pBalance, Person Owner){
+        if( pBalance < 0)
+            balance = 0;
+        else
+            balance = pBalance;
+        this.owner = Owner;
+        this.owner.setAccount(this);
+    }
+
+
     //setter
     public void setBalance(int balance) {
         this.balance = balance;
@@ -110,8 +136,8 @@ public class BankAccount {
 
             //출력부
             System.out.println("-true -from : [" + owner.getName() + "], to : [" + to.getName() + "], amount : [" + amount + "], balance : [" + balance + "]");
-            this.owner.getCurrentState();
-            to.getCurrentState();
+            //this.owner.getCurrentState();
+            //to.getCurrentState();
             System.out.println("");
 
             return true;
@@ -133,8 +159,8 @@ public class BankAccount {
 
             //출력부
             System.out.println("-true -from : [" + owner.getName() + "], to : [" + to.getOwner().getName() + "], amount : [" + amount + "], balance : [" + balance + "]");
-            this.owner.getCurrentState();
-            to.getOwner().getCurrentState();
+           // this.owner.getCurrentState();
+            //to.getOwner().getCurrentState();
             System.out.println("");
 
             return true;
