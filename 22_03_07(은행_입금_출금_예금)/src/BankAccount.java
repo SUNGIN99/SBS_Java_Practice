@@ -3,6 +3,36 @@ public class BankAccount {
     private Person owner;
 
     //생성자 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public BankAccount(int pBalance) {
+        if (pBalance < 0)
+            balance = 0;
+        else
+            balance = pBalance;
+    }
+
+    public BankAccount(Person Owner) {
+        balance = 0;
+        this.owner = Owner;
+
+        this.owner.setAccount(this);
+    }
+
+    public BankAccount(int pBalance, Person Owner) {
+        if (pBalance < 0)
+            balance = 0;
+        else
+            balance = pBalance;
+
+        //System.out.println(this.owner);
+        this.owner = Owner;
+        //System.out.println(this.owner);
+        Owner.setAccount(this);
+        // this.owner.setAccount(this);
+    }
+
+
+    //생성자 -----------------------------------------------------------------------------------------------------------------------------------------------------------
     public BankAccount(){}
 
     public BankAccount(int pBalance){
@@ -136,8 +166,8 @@ public class BankAccount {
 
             //출력부
             System.out.println("-true -from : [" + owner.getName() + "], to : [" + to.getName() + "], amount : [" + amount + "], balance : [" + balance + "]");
-            //this.owner.getCurrentState();
-            //to.getCurrentState();
+            this.owner.getCurrentState();
+            to.getCurrentState();
             System.out.println("");
 
             return true;
@@ -159,8 +189,8 @@ public class BankAccount {
 
             //출력부
             System.out.println("-true -from : [" + owner.getName() + "], to : [" + to.getOwner().getName() + "], amount : [" + amount + "], balance : [" + balance + "]");
-           // this.owner.getCurrentState();
-            //to.getOwner().getCurrentState();
+            this.owner.getCurrentState();
+            to.getOwner().getCurrentState();
             System.out.println("");
 
             return true;
