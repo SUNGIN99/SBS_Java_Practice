@@ -6,14 +6,12 @@ public class PokeBag {
 
     HashMap<String, ArrayList> pokeDex = new HashMap<>();
 
-    int pokemonAvaliable = pokeDex.keySet().size();
-
     //@Override
     public void add(Pokemon obj){
         //System.out.println(obj.getName());
 
         if(pokeDex.get(obj.getName()) == null) {
-            // 1) pokeDex에 해당 포켓몬이 존재하지 않는다면,
+            // 1) pokeDex 해시맵에 해당 포켓몬이 존재하지 않는다면,
             // 해당 포켓몬의 최초 객체를 리스트에 추가하고
             // 그 리스트를 해시맵에 새로 추가
             ArrayList<Pokemon> newPokemon = new ArrayList<>();
@@ -29,6 +27,7 @@ public class PokeBag {
     }
 
     public Pokemon getStrongest(String name){
+        // 1) 매개변수로 받은 포켓몬 중에서 가장 강한 녀석
         int HighestCp = 0, tempCp;
         // 가장 높은 Cp 보유 포켓몬, Cp탐색용 변수
 
@@ -38,11 +37,14 @@ public class PokeBag {
         ArrayList<Pokemon> temp = pokeDex.get(name);
         //해시맵에서 해당 이름을 가진 key 포켓몬 리스트를 가져옴
 
-        for(int i = 0; i < temp.size(); i++){
-            tempPokemon = temp.get(i);
-            tempCp = tempPokemon.getCp();
+        if(temp == null) return null;
+        //만약 해당 포켓몬이 존재하지 않는다면 null을 반환
 
-            if(tempCp > HighestCp){
+       for(int i = 0; i < temp.size(); i++){
+            tempPokemon = temp.get(i); // 매개변수로 받은 포켓몬 이름의 능력치 리스트에서 한 객체씩 가져옴
+            tempCp = tempPokemon.getCp(); // 한 객체씩 cp를 핸들링
+
+            if(tempCp > HighestCp){ //가장 높은 cp를 가진 객체 포켓몬을 저장
                 HighestCp = tempCp;
                 Strongest = tempPokemon;
             }
@@ -52,13 +54,19 @@ public class PokeBag {
     }
 
     public Pokemon getStrongest(){
+        // 2) 가지고 있는 포켓몬 중 가장 강한 녀석
         int HighestCp = 0, tempCp;
         Pokemon Strongest = null, tempPokemon;
 
         for(ArrayList temp : pokeDex.values()){
-            //pokeDex.values() => 포켓몬의 ArrayList
+            // pokeDex => HashMap
+            // pokeDex.values() => 포켓몬의 ArrayList
+            // 모든 포켓몬의 ArrayList를 포켓몬마다 하나 씩 탐색하여 그 중에서 가장 큰 녀석을 찾을거임
+
             for(int i = 0; i < temp.size(); i++){
-                tempPokemon = (Pokemon)temp.get(i);
+                tempPokemon = (Pokemon)temp.get(i); //HashMap의 key를 통해 ArrayList의 요소들로 접근
+
+                // 가장 강한 녀석 찾는 중..
                 tempCp = tempPokemon.getCp();
 
                 if(tempCp > HighestCp){
@@ -72,7 +80,7 @@ public class PokeBag {
 
         //System.out.println(pokeDex.size());
 
-        return Strongest;
+        return Strongest; // 가장 강한 녀석 반환
     }
 
 }

@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-
-    private final static PokeBag pokeBag = new PokeBag();
-
     public static void main(String[] args) {
+
+        PokeBag pokeBag = new PokeBag();
 
         pokeBag.add(new Pokemon("마그마", 1024));
         pokeBag.add(new Pokemon("마그마그", 215));
@@ -19,7 +18,7 @@ public class Main {
         pokeBag.add(new Pokemon("마릴", 39));
         pokeBag.add(new Pokemon("마자용", 12));
 
-        String findPokemon = "마릴";
+
         Pokemon temp;
         for(String POKEMON : pokeBag.pokeDex.keySet()){
             System.out.println(POKEMON);
@@ -31,13 +30,21 @@ public class Main {
             System.out.println("\n");
         }
 
+        // System.out.println(pokeBag.getStrongest("마릴"));
+        // System.out.println(pokeBag.getStrongest());
+        // System.out.println(pokeBag.getStrongest("피카츄"));
 
+        String findPokemon = "마릴";
         System.out.println(pokeBag.pokeDex.get("마릴") + "\n");
         System.out.println("가장 쎈 " + findPokemon + " : " + pokeBag.getStrongest(findPokemon));
         System.out.println("능력치 : " + pokeBag.getStrongest(findPokemon).getCp());
+        System.out.println();
 
         System.out.println("가장 쎈 " + pokeBag.getStrongest().getName() + " : " + pokeBag.getStrongest());
         System.out.println("능력치 : " + pokeBag.getStrongest().getCp());
+        System.out.println();
+
+        System.out.println(pokeBag.getStrongest("피카츄"));
 
 
         //hashmap 의 key는 'hashcode'관리가 된다.
