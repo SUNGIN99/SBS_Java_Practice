@@ -1,0 +1,56 @@
+public class Main {
+
+}
+
+       Card Class
+        (1) 카드의 모양에는 정수 1,2,3,4로 표현되는 클로버, 하드, 다이몬드, 스페이드가 있습니다.
+            한번 정해지면 바뀔 이유가 없죠. 또한 특별히 getter 가 필요 없기 때문에 public 입니다.
+        public final int suitNumber
+
+        (2) 카드의 값을 뜨하는 1, 11, 12, 13 'ACE', 'Jack', 'Queen', 'King' 로 표현합니다. 2 ~ 10은 그 숫자 자체로
+            표현 합니다. 마찬가지로 한번 정해지면 바뀔 이유가 없기 때문에  public final 입니다.
+        public final int rankNumber
+
+        (3) 파라미터로 정수형 suit와 rank를 받고, 인스턴스 변수 suit와 rank에 각각 지정해줍니다.
+            1 <= suit <= 4, 1 <= rank <= 13 이라고 가정합니다.
+        public Card(int suitNumber, int rankNumber)
+
+        (4) 변수 suit의 숫자 값에 해당 하는 슈트(suit)를 리턴해 줍니다.
+        public String getSuit()
+
+        (5) 변수 number의 숫자 값에 해당하는 카드 랭크를 리턴해줍니다.
+        public String getRank()
+
+        (6) 카드를 {랭크} of {슈트} 방식으로 요약해 줍니다.
+        public String toString()
+
+        Deck Class
+        (1) 덱에 있는 카드를 보관하는 ArrayList
+        private ArrayList<Card> cards
+
+        (2) 카드 목록을 리턴해줍니다.
+        public ArrayList<Card> getCards()
+
+        (3) 파라미터로 card를 받고 cards에 추가해줍니다.
+        public void addCard(Card card)
+
+        (4) 카드 목록에 있는 모든 카드를 출력합니다. 출력할 때는 카드 인스턴스의 toString 메소드를 사용하면됩니다.
+        public void print()
+
+        (5) crads의 순서를 뒤죽박죽 섞습니다. Random 클래스를 이용해서 완전히 랜덤하게 섞어 주세요.
+        public void shuffle()
+
+        (6) 먼저 hand라는 새로운 Deck 인스턴스를 만들고  count가 5면 현재 덱의 cards의 마지막 다섯장을 빼고,
+         그 다섯장을 hand의 cards에 넣어주세요. 그리고 hand를 리턴해 주면 됩니다.
+/*
+        8 of Clubs
+        Ace of Clubs
+        7 of Spades
+        9 of Diamonds
+        9 of Hearts
+        ----------
+        4 of Diamonds
+        8 of Diamonds
+        Jack of Hearts
+        2 of Clubs
+        10 of Spades*/
