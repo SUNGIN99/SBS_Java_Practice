@@ -1,12 +1,11 @@
-public class BlackjackHand extends Deck{
+public class BlackjackHand extends Deck<BlackjackCard>{
 
 
     public int getValue(){
         String check;
         int valueSum = 0;
 
-        for(Card c : getCards()){
-            BlackjackCard card = (BlackjackCard)c;
+        for(BlackjackCard c : getCards()){
             check = c.getRank();
 
             if(check == "Jack" || check == "Queen" || check == "King"){

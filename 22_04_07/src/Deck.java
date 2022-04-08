@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Deck {
+public class Deck<T extends Card> {
 
     // mvc왜 쓰냐, 서비스는 왜 구분하냐?
 
-    private ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<T> cards = new ArrayList<>();
 
-    public ArrayList<Card> getCards(){
+    public ArrayList<T> getCards(){
         return cards;
     }
 
-    public void addCard(Card card){ // 카드 목록 출력
+    public void addCard(T card){ // 카드 목록 출력
         cards.add(card);
     }
 
     public void print(){
-        for(Card c : cards){
+        for(T c : cards){
             System.out.println(c.toString());
         }
     }
@@ -32,7 +32,7 @@ public class Deck {
         int randIndex;
         for(int i = 0; i<cards.size(); i++){
             randIndex = random.nextInt(cards.size());
-            Card temp = cards.get(i);
+            T temp = cards.get(i);
             cards.set(i, cards.get(randIndex));
             cards.set(randIndex,temp);
         }
